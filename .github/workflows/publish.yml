@@ -22,4 +22,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: carepaydev/helm-awscli:${GITHUB_SHA},carepaydev/helm-awscli:${GITHUB_REF#refs/tags/}
+        tags: carepaydev/helm-awscli:${{ github.sha }}},carepaydev/helm-awscli:${{ github.ref_name }}
