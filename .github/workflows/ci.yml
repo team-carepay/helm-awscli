@@ -1,0 +1,13 @@
+on: push
+
+name: build
+
+jobs:
+  default:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build Docker Image
+      uses: docker/build-push-action@v2
