@@ -8,9 +8,12 @@ ARG HELM_VERSION=3.9.0
 RUN \
 # Install pre-requisites
     apk add --no-cache \
+        bash \
         binutils \
         curl \
-        git && \
+        git \
+        yq \
+    && \
 # Install glibc for Alpine
     curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub && \
     curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk && \
@@ -36,6 +39,7 @@ RUN \
     curl -sL https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -xz && \
     mv linux-amd64/helm /usr/bin/helm && \
     chmod +x /usr/bin/helm && \
+    helm plugin install https://github.com/hypnoglow/helm-s3.git && \
     rm -rf linux-amd64 && \
     apk --no-cache del \
         binutils \
