@@ -12,6 +12,7 @@ RUN \
         binutils \
         curl \
         git \
+        openssl \
         yq \
     && \
 # Install glibc for Alpine
