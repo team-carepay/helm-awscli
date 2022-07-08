@@ -13,4 +13,3 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
-        tags: carepaydev/helm-awscli:${{ github.sha }},carepaydev/helm-awscli:latest
